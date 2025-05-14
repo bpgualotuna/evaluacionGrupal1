@@ -48,11 +48,7 @@ ejecutarBusqueda=function(){
     }
 }
 
-depositar=function(numeroCuenta,monto){
-    let cuentaAfectada;
-    //invoca a buscarCuenta, guarda el resultado en la variable cuentaAfectada;
-    //Al saldo actual de la cuenta afectada, le suma el monto que recibe como parámetro
-}
+
 
 ejecutarDeposito=function(){
     //Toma el numero de cuenta ingresado en la caja de texto
@@ -60,12 +56,31 @@ ejecutarDeposito=function(){
     //invoca a depositar
     //Muestra un mensaje TRANSACCION EXITOSA
     //Muestra en pantalla el nuevo saldo de la cuenta
+    numCuenta = recuperarTexto("txtCuenta");
+    monto = recuperarFloat("txtCantidad");
+    let cuenta = buscarCuenta(numCuenta);
+    depositar(numCuenta,monto);
+    alert("TRANSACCION EXITOSA");
+    mostrarTexto("Datos","Numero de Cuenta: " + cuenta.numeroCuenta + "\n" +
+        "Cedula: " + cuenta.cedula + "\n" +
+        "Nombre: " + cuenta.nombre + "\n" +
+        "Apellido: " + cuenta.apellido + "\n" +
+        "Saldo: " + cuenta.saldo); 
+        
+}
+
+ejecutarRetiro=function(){    
+    numCuenta = recuperarTexto("txtCuenta");
+    monto = recuperarFloat("txtCantidad");    
+    retirar(numCuenta,monto);
 }
 
 depositar=function(numeroCuenta,monto){
     let cuentaAfectada;
     //invoca a buscarCuenta, guarda el resultado en la variable cuentaAfectada;
     //Al saldo actual de la cuenta afectada, le suma el monto que recibe como parámetro
+    cuentaAfectada = buscarCuenta(numeroCuenta);    
+    cuentaAfectada.saldo += monto;
 }
 
 retirar=function(numeroCuenta,monto){
@@ -75,4 +90,17 @@ retirar=function(numeroCuenta,monto){
     //Si el saldo es suficiente,al saldo actual de la cuenta afectada, le resta el monto que recibe como parámetro
     //Si el saldo no es suficiente, muestra un alert SALDO INSUFICIENTE
     //Si logra retirar muestra un mensaje TRANSACCION EXITOSA y muestra en pantalla el nuevo saldo de la cuenta
+    cuentaAfectada = buscarCuenta(numeroCuenta);
+    if(cuentaAfectada.saldo >= monto){
+        cuentaAfectada.saldo -= monto;
+        alert("TRANSACCION EXITOSA");
+        mostrarTexto("Datos","Numero de Cuenta: " + cuentaAfectada.numeroCuenta + "\n" +
+        "Cedula: " + cuentaAfectada.cedula + "\n" +
+        "Nombre: " + cuentaAfectada.nombre + "\n" +
+        "Apellido: " + cuentaAfectada.apellido + "\n" +
+        "Saldo: " + cuentaAfectada.saldo); 
+
+    }else{
+        alert("SALDO INSUFICIENTE");
+    }
 }
