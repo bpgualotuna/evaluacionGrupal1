@@ -93,3 +93,31 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+
+tbody tr:nth-child(odd) {
+    background-color: #71fdff;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #1aa1f0;
+  }
+  
+  tbody tr {
+    background-image: url(noise.png);
+  }
+  
+  table {
+    background-color: #0b0c0c;
+    width: 100%;
+  }
+  td{
+    text-align: center;
+  }
+  .areaTabla{
+    margin-top: 20px;
+  }
+
+  .areaTabla tbody tr:hover {
+  background-color: #e0e0e0; /* Efecto hover */
+}

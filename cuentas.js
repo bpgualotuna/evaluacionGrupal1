@@ -72,10 +72,10 @@ agregar=function(){
     //Invoca a agregarCuenta
     //Invoca a mostrarCuentas
     let cedula = recuperarTexto("txtCedula");
-    let numeroCuenta = recuperarTexto("txtNumeroCuenta");
+    let numeroCuenta = recuperarTexto("txtCuenta");
     let nombre = recuperarTexto("txtNombre");
     let apellido = recuperarTexto("txtApellido");
-    let saldo = parseFloat(recuperarTexto("txtSaldo"));
+    let saldo = 0;
     let cuenta = [];
     cuenta.numeroCuenta = numeroCuenta;
     cuenta.cedula = cedula;
