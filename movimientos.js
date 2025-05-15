@@ -12,7 +12,10 @@ cargar=function(){
     ocultarComponente("divTransacciones");
 
 }
-
+ejecutarFiltro=function(){
+    let elemento=recuperarTexto("txtMovimiento");
+    filtrarMovimientos(elemento);
+}
 filtrarMovimientos=function(numeroCuenta){
     let movimientosCuenta=[];
     //Se barre el arreglo de movimientos
