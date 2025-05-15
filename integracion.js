@@ -176,6 +176,8 @@ ejecutarDeposito=function(){
     monto = recuperarFloat("txtCantidad");
     let cuenta = buscarCuenta(numCuenta);
     depositar(numCuenta,monto);
+    let movimiento = {};
+    
     alert("TRANSACCION EXITOSA");
     mostrarTexto("Datos","Numero de Cuenta: " + cuenta.numeroCuenta + "\n" +
         "Cedula: " + cuenta.cedula + "\n" +
