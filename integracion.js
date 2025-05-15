@@ -1,14 +1,14 @@
-cuentas=[
-    {numeroCuenta:"02234567", cedula:"1714616123",nombre:"Juan",apellido:"Perez",saldo:0.0},
-    {numeroCuenta:"02345211",cedula:"1281238233",nombre:"Felipe",apellido:"Caicedo",saldo:0.0}
+cuentas = [
+    { numeroCuenta: "02234567", cedula: "1714616123", nombre: "Juan", apellido: "Perez", saldo: 0.0 },
+    { numeroCuenta: "02345211", cedula: "1281238233", nombre: "Felipe", apellido: "Caicedo", saldo: 0.0 }
 ]
 
-movimientos=[
-    {numeroCuenta:"02234567",monto:10.24,tipo:"D"},
-    {numeroCuenta:"02345211",monto:45.90,tipo:"D"},
-    {numeroCuenta:"02234567",monto:65.23,tipo:"C"},
-    {numeroCuenta:"02345211",monto:65.23,tipo:"C"},
-    {numeroCuenta:"02345211",monto:12.0,tipo:"D"},
+movimientos = [
+    { numeroCuenta: "02234567", monto: 10.24, tipo: "D" },
+    { numeroCuenta: "02345211", monto: 45.90, tipo: "D" },
+    { numeroCuenta: "02234567", monto: 65.23, tipo: "C" },
+    { numeroCuenta: "02345211", monto: 65.23, tipo: "C" },
+    { numeroCuenta: "02345211", monto: 12.0, tipo: "D" },
 ]
 
 /*
@@ -16,7 +16,7 @@ movimientos=[
     IMPORTANTE: NO DUPLICAR FUNCIONES, si existe una misma función en varios archivos,
     dejar solo una de ellas, ejemplo la función buscarCuenta
 */
-cargaInicial = function(){
+cargaInicial = function () {
     mostrarComponente("divCuentas");
     ocultarComponente("divTransacciones");
     ocultarComponente("divMovimientos");
@@ -48,40 +48,40 @@ cargarMovimientos = function () {
 //y el monto que se retiró. Este objeto movimiento se agrega al arreglo movimientos
 
 // Cuentas.js
-mostrarCuentas=function(){
+mostrarCuentas = function () {
     /*
         Muestra en pantalla una tabla con la información de todas las cuentas del arreglo.
         Columnas: NUMERO CUENTA, NOMBRE, SALDO
         En la columna NOMBRE concatenar el nombre y el apellido
     */
-    let cmpTabla=document.getElementById("inferior");
-    let contenidoTabla= "<table><tr>" +
-    "<th>NUMERO CUENTA</th>" +
-    "<th>NOMBRE</th>" +
-    "<th>SALDO</th>" +
-    "</tr>"
+    let cmpTabla = document.getElementById("inferior");
+    let contenidoTabla = "<table><tr>" +
+        "<th>NUMERO CUENTA</th>" +
+        "<th>NOMBRE</th>" +
+        "<th>SALDO</th>" +
+        "</tr>"
     let elementoCuentas;
-    for(let i=0;i<cuentas.length;i++){
-        elementoCuentas=cuentas[i];
-        contenidoTabla+="<tr>" +
-        "<td>"+elementoCuentas.numeroCuenta+"</td>" +
-        "<td>"+elementoCuentas.nombre+" "+elementoCuentas.apellido+"</td>" +
-        "<td>"+elementoCuentas.saldo+"</td>" +
-        "</tr>";
+    for (let i = 0; i < cuentas.length; i++) {
+        elementoCuentas = cuentas[i];
+        contenidoTabla += "<tr>" +
+            "<td>" + elementoCuentas.numeroCuenta + "</td>" +
+            "<td>" + elementoCuentas.nombre + " " + elementoCuentas.apellido + "</td>" +
+            "<td>" + elementoCuentas.saldo + "</td>" +
+            "</tr>";
     }
-    contenidoTabla+="</table>";
-    cmpTabla.innerHTML=contenidoTabla;
+    contenidoTabla += "</table>";
+    cmpTabla.innerHTML = contenidoTabla;
 }
 
 /*
     Busca la cuenta en el arreglo en función del número de cuenta,
     si existe retorna el objeto cuenta, caso contrario retorna null. 
 */
-buscarCuenta=function(numeroCuenta){
-    let cuentaEncontrada=null;
-    for(let i=0;i<cuentas.length;i++){
-        if(cuentas[i].numeroCuenta==numeroCuenta){
-            cuentaEncontrada=cuentas[i];
+buscarCuenta = function (numeroCuenta) {
+    let cuentaEncontrada = null;
+    for (let i = 0; i < cuentas.length; i++) {
+        if (cuentas[i].numeroCuenta == numeroCuenta) {
+            cuentaEncontrada = cuentas[i];
             break;
         }
     }
@@ -92,19 +92,19 @@ buscarCuenta=function(numeroCuenta){
     Agrega una cuenta al arreglo, solamente si no existe otra cuenta con el mismo numero.
     No retorna nada
 */
-agregarCuenta=function(cuenta){
+agregarCuenta = function (cuenta) {
     //Si ya existe mostrar un alert CUENTA EXISTENTE
     //Si se agrega, mostrar un alert CUENTA AGREGADA
     cuentaExiste = buscarCuenta(cuenta.numeroCuenta);
-    if(cuentaExiste!=null){
+    if (cuentaExiste != null) {
         alert("CUENTA EXISTENTE");
-    }else{
+    } else {
         cuentas.push(cuenta);
         alert("CUENTA AGREGADA");
     }
 }
 
-agregar=function(){
+agregar = function () {
     //Toma los valores de las cajas de texto, sin validaciones
     //Crea un objeto cuenta y agrega los atributos con los valores de las cajas respectivas
     //Invoca a agregarCuenta
@@ -144,21 +144,21 @@ agregar=function(){
     return cuentaEncontrada;
 }*/
 
-ejecutarBusqueda=function(){
+ejecutarBusqueda = function () {
     //toma el numero de cuenta de la caja de texto
     //invoca a buscarCuenta y guarda el resultado en una variable
     //Si el resultado es diferente de null, muestra en pantalla, caso contrario muestra un alert
-    
+
     let numCuenta = recuperarTexto("txtCuentaT");
     let cuenta = buscarCuenta(numCuenta);
-    if(cuenta == null){
+    if (cuenta == null) {
         alert("No existe la cuenta");
-    }else{
-        mostrarTexto("Datos","Numero de Cuenta: " + cuenta.numeroCuenta + "\n" +
-        "Cedula: " + cuenta.cedula + "\n" +
-        "Nombre: " + cuenta.nombre + "\n" +
-        "Apellido: " + cuenta.apellido + "\n" +
-        "Saldo: " + cuenta.saldo); 
+    } else {
+        mostrarTexto("Datos", "Numero de Cuenta: " + cuenta.numeroCuenta + "\n" +
+            "Cedula: " + cuenta.cedula + "\n" +
+            "Nombre: " + cuenta.nombre + "\n" +
+            "Apellido: " + cuenta.apellido + "\n" +
+            "Saldo: " + cuenta.saldo);
         mostrarComponente("txtCantidad");
         habilitarComponente("btnDepositar");
         habilitarComponente("btnRetirar");
@@ -167,7 +167,7 @@ ejecutarBusqueda=function(){
 
 
 
-ejecutarDeposito=function(){
+ejecutarDeposito = function () {
     //Toma el numero de cuenta ingresado en la caja de texto
     //Toma el monto ingresado en la caja de texto
     //invoca a depositar
@@ -176,33 +176,37 @@ ejecutarDeposito=function(){
     numCuenta = recuperarTexto("txtCuentaT");
     monto = recuperarFloat("txtCantidad");
     let cuenta = buscarCuenta(numCuenta);
-    depositar(numCuenta,monto);
+    depositar(numCuenta, monto);
     let movimiento = {};
-
+    movimiento.numeroCuenta = numCuenta;
+    movimiento.monto = monto;
+    movimiento.tipo = "C";
+    movimientos.push(movimiento);
     alert("TRANSACCION EXITOSA");
-    mostrarTexto("Datos","Numero de Cuenta: " + cuenta.numeroCuenta + "\n" +
+    mostrarTexto("Datos", "Numero de Cuenta: " + cuenta.numeroCuenta + "\n" +
         "Cedula: " + cuenta.cedula + "\n" +
         "Nombre: " + cuenta.nombre + "\n" +
         "Apellido: " + cuenta.apellido + "\n" +
-        "Saldo: " + cuenta.saldo); 
-        
+        "Saldo: " + cuenta.saldo);
+
 }
 
-ejecutarRetiro=function(){    
+ejecutarRetiro = function () {
     numCuenta = recuperarTexto("txtCuentaT");
-    monto = recuperarFloat("txtCantidad");    
-    retirar(numCuenta,monto);
+    monto = recuperarFloat("txtCantidad");
+    retirar(numCuenta, monto);
+
 }
 
-depositar=function(numeroCuenta,monto){
+depositar = function (numeroCuenta, monto) {
     let cuentaAfectada;
     //invoca a buscarCuenta, guarda el resultado en la variable cuentaAfectada;
     //Al saldo actual de la cuenta afectada, le suma el monto que recibe como parámetro
-    cuentaAfectada = buscarCuenta(numeroCuenta);    
+    cuentaAfectada = buscarCuenta(numeroCuenta);
     cuentaAfectada.saldo += monto;
 }
 
-retirar=function(numeroCuenta,monto){
+retirar = function (numeroCuenta, monto) {
     let cuentaAfectada;
     //invoca a buscarCuenta, guarda el resultado en la variable cuentaAfectada;
     //Valida si la cuenta tiene el saldo suficiente para retirar el monto
@@ -210,16 +214,21 @@ retirar=function(numeroCuenta,monto){
     //Si el saldo no es suficiente, muestra un alert SALDO INSUFICIENTE
     //Si logra retirar muestra un mensaje TRANSACCION EXITOSA y muestra en pantalla el nuevo saldo de la cuenta
     cuentaAfectada = buscarCuenta(numeroCuenta);
-    if(cuentaAfectada.saldo >= monto){
+    if (cuentaAfectada.saldo >= monto) {
         cuentaAfectada.saldo -= monto;
         alert("TRANSACCION EXITOSA");
-        mostrarTexto("Datos","Numero de Cuenta: " + cuentaAfectada.numeroCuenta + "\n" +
-        "Cedula: " + cuentaAfectada.cedula + "\n" +
-        "Nombre: " + cuentaAfectada.nombre + "\n" +
-        "Apellido: " + cuentaAfectada.apellido + "\n" +
-        "Saldo: " + cuentaAfectada.saldo); 
+        mostrarTexto("Datos", "Numero de Cuenta: " + cuentaAfectada.numeroCuenta + "\n" +
+            "Cedula: " + cuentaAfectada.cedula + "\n" +
+            "Nombre: " + cuentaAfectada.nombre + "\n" +
+            "Apellido: " + cuentaAfectada.apellido + "\n" +
+            "Saldo: " + cuentaAfectada.saldo);
+        let movimiento = {};
+        movimiento.numeroCuenta = numCuenta;
+        movimiento.monto = monto;
+        movimiento.tipo = "D";
+        movimientos.push(movimiento);
 
-    }else{
+    } else {
         alert("SALDO INSUFICIENTE");
     }
 }
@@ -230,19 +239,19 @@ retirar=function(numeroCuenta,monto){
 
 //-----------------------------------
 
-ejecutarFiltro=function(){
-    let elemento=recuperarTexto("txtMovimiento");
+ejecutarFiltro = function () {
+    let elemento = recuperarTexto("txtMovimiento");
     filtrarMovimientos(elemento);
 }
 
-filtrarMovimientos=function(numeroCuenta){
-    let movimientosCuenta=[];
+filtrarMovimientos = function (numeroCuenta) {
+    let movimientosCuenta = [];
     //Se barre el arreglo de movimientos
-    for(let i=0;i<movimientos.length;i++){
-    //En cada iteración, verifica si el numero de cuenta del movimiento es igual al que recibe como parametro
-    //En caso de serlo, agrega la cuenta al arreglo movimientosCuenta
-    //Invoca a mostrarMovimientos, pasándole como parámetro movimientosCuenta
-        if(numeroCuenta==movimientos[i].numeroCuenta){
+    for (let i = 0; i < movimientos.length; i++) {
+        //En cada iteración, verifica si el numero de cuenta del movimiento es igual al que recibe como parametro
+        //En caso de serlo, agrega la cuenta al arreglo movimientosCuenta
+        //Invoca a mostrarMovimientos, pasándole como parámetro movimientosCuenta
+        if (numeroCuenta == movimientos[i].numeroCuenta) {
             movimientosCuenta.push(movimientos[i]);
         }
     }
@@ -252,28 +261,28 @@ filtrarMovimientos=function(numeroCuenta){
 /*
     Recibe un arreglo con los movimientos que va a mostrar en pantalla
 */
-mostrarMovimientos=function(misMovimientos){
+mostrarMovimientos = function (misMovimientos) {
     //Muestra en pantalla una tabla con los movimientos que recibe en misMovimientos
     //Columnas: NUMERO CUENTA, MONTO, TIPO
-    let elemento=document.getElementById("tablaMovimientos");
-    let estructuraTabla="<table><tr>"+
-    "<th>NUMERO CUENTA</th>"+
-    "<th>MONTO</th>"+
-    "<th>TIPO</th></tr>";
+    let elemento = document.getElementById("tablaMovimientos");
+    let estructuraTabla = "<table><tr>" +
+        "<th>NUMERO CUENTA</th>" +
+        "<th>MONTO</th>" +
+        "<th>TIPO</th></tr>";
     //Si ya pinta correctamente la tabla, hacer el siguiente cambio:
     //Si el tipo es D(DEBITO), mostrar el monto en negativo (multiplicar por -1)
     //Si el tipo es C(CREDITO), mostrar el monto en positivo (tal como está guardado)
-    for(let i=0;i<misMovimientos.length;i++){
-        movimiento=misMovimientos[i];
-        estructuraTabla+="<tr><td>"+movimiento.numeroCuenta+"</td>";
-        if(movimiento.tipo=="D"){
-         estructuraTabla+="<td>"+((movimiento.monto)*-1)+"</td>";
-    }else{
-         estructuraTabla+="<td>"+movimiento.monto+"</td>";
+    for (let i = 0; i < misMovimientos.length; i++) {
+        movimiento = misMovimientos[i];
+        estructuraTabla += "<tr><td>" + movimiento.numeroCuenta + "</td>";
+        if (movimiento.tipo == "D") {
+            estructuraTabla += "<td>" + ((movimiento.monto) * -1) + "</td>";
+        } else {
+            estructuraTabla += "<td>" + movimiento.monto + "</td>";
+        }
+        estructuraTabla += "<td>" + movimiento.tipo + "</td></tr>";
     }
-    estructuraTabla+= "<td>"+movimiento.tipo+"</td></tr>";
-    }
-    estructuraTabla+="</table>";
-    elemento.innerHTML=estructuraTabla;
-    
+    estructuraTabla += "</table>";
+    elemento.innerHTML = estructuraTabla;
+
 }
