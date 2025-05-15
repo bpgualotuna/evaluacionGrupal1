@@ -16,7 +16,26 @@ movimientos=[
     IMPORTANTE: NO DUPLICAR FUNCIONES, si existe una misma función en varios archivos,
     dejar solo una de ellas, ejemplo la función buscarCuenta
 */
+cargaInicial = function(){
+    mostrarComponente("divCuentas");
+    ocultarComponente("divTransacciones");
+    ocultarComponente("divMovimientos");
+}
 
+cargarTransacciones = function () {
+    mostrarComponente("divTransacciones");
+    ocultarComponente("divCuentas");
+    ocultarComponente("divMovimientos");
+    ocultarComponente("txtCantidad");
+    deshabilitarComponente("btnDepositar");
+    deshabilitarComponente("btnRetirar");
+}
+
+cargarMovimientos = function () {
+    mostrarComponente("divMovimientos");
+    ocultarComponente("divCuentas");
+    ocultarComponente("divTransacciones");
+}
 //OCULTAR Y MOSTRAR LOS DIVS, para que cada opción muestre solo su parte
 
 
