@@ -242,6 +242,7 @@ retirar = function (numeroCuenta, monto) {
 ejecutarFiltro = function () {
     let elemento = recuperarTexto("txtMovimiento");
     filtrarMovimientos(elemento);
+    mostrarTextoEnCaja("txtMovimiento","");
 }
 
 filtrarMovimientos = function (numeroCuenta) {

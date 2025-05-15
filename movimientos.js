@@ -15,6 +15,7 @@ cargar=function(){
 ejecutarFiltro=function(){
     let elemento=recuperarTexto("txtMovimiento");
     filtrarMovimientos(elemento);
+    mostrarTextoEnCaja("txtMovimiento","");
 }
 filtrarMovimientos=function(numeroCuenta){
     let movimientosCuenta=[];
