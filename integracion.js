@@ -148,7 +148,8 @@ ejecutarBusqueda=function(){
     //toma el numero de cuenta de la caja de texto
     //invoca a buscarCuenta y guarda el resultado en una variable
     //Si el resultado es diferente de null, muestra en pantalla, caso contrario muestra un alert
-    numCuenta = recuperarTexto("txtCuenta");
+    
+    let numCuenta = recuperarTexto("txtCuentaT");
     let cuenta = buscarCuenta(numCuenta);
     if(cuenta == null){
         alert("No existe la cuenta");
@@ -172,10 +173,12 @@ ejecutarDeposito=function(){
     //invoca a depositar
     //Muestra un mensaje TRANSACCION EXITOSA
     //Muestra en pantalla el nuevo saldo de la cuenta
-    numCuenta = recuperarTexto("txtCuenta");
+    numCuenta = recuperarTexto("txtCuentaT");
     monto = recuperarFloat("txtCantidad");
     let cuenta = buscarCuenta(numCuenta);
     depositar(numCuenta,monto);
+    let movimiento = {};
+
     alert("TRANSACCION EXITOSA");
     mostrarTexto("Datos","Numero de Cuenta: " + cuenta.numeroCuenta + "\n" +
         "Cedula: " + cuenta.cedula + "\n" +
@@ -186,7 +189,7 @@ ejecutarDeposito=function(){
 }
 
 ejecutarRetiro=function(){    
-    numCuenta = recuperarTexto("txtCuenta");
+    numCuenta = recuperarTexto("txtCuentaT");
     monto = recuperarFloat("txtCantidad");    
     retirar(numCuenta,monto);
 }
