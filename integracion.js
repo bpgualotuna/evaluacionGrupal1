@@ -20,6 +20,7 @@ cargaInicial = function () {
     mostrarComponente("divCuentas");
     ocultarComponente("divTransacciones");
     ocultarComponente("divMovimientos");
+    resetCuentas();
 }
 
 cargarTransacciones = function () {
@@ -29,12 +30,26 @@ cargarTransacciones = function () {
     ocultarComponente("txtCantidad");
     deshabilitarComponente("btnDepositar");
     deshabilitarComponente("btnRetirar");
+    resetTransacciones();
 }
 
 cargarMovimientos = function () {
     mostrarComponente("divMovimientos");
     ocultarComponente("divCuentas");
     ocultarComponente("divTransacciones");
+}
+
+resetTransacciones = function () {
+    mostrarTextoEnCaja("txtCuentaT", "");
+    mostrarTexto("Datos", "");
+}
+
+resetCuentas = function () {
+    mostrarTextoEnCaja("txtCedula", "");
+    mostrarTextoEnCaja("txtCuenta", "");
+    mostrarTextoEnCaja("txtNombre", "");
+    mostrarTextoEnCaja("txtApellido", "");
+    mostrarTexto("inferior", "");
 }
 //OCULTAR Y MOSTRAR LOS DIVS, para que cada opción muestre solo su parte
 
